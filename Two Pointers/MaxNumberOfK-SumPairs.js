@@ -1,0 +1,19 @@
+var maxOperations = function(nums, k) {
+    nums.sort((a, b) => {
+        return a - b
+    })
+    let count = 0
+    let left = 0, right = nums.length - 1
+    while (left < right) {
+        if (nums[left] + nums[right] === k) {
+            count++
+            left++
+            right--
+        } else if (nums[left] + nums[right] > k) {
+            right--
+        } else {
+            left++
+        }
+    }
+    return count
+};
